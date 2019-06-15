@@ -1,0 +1,34 @@
+<table class="table table-striped" *ngIf="user$ | async as user">
+  <tbody>
+    <tr>
+      <td>UserName</td>
+      <td>{{user.displayName}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr *ngIf="user.emailVerified">
+      <td>Email Verified</td>
+      <td>Yes</td>
+    </tr>
+    <tr *ngIf="!user.emailVerified">
+      <td>Email Verified</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>User Id</td>
+      <td>{{user.uid}}</td>
+    </tr>
+    <tr>
+      <td>Provider Id</td>
+      <td>{{user.providerData[0].providerId}}</td>
+    </tr>
+    <tr>
+      <td>PhotoURL</td>
+      <td>{{user.providerData[0].photoURL}}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!(user$ | async)">No User Logged In</div>
